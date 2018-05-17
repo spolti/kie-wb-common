@@ -69,7 +69,7 @@ public class ContainerCardPresenter {
         bodyPresenter.setup( container.getMessages() );
 
         final FooterPresenter footerPresenter = presenterProvider.select( FooterPresenter.class ).get();
-        footerPresenter.setup( container.getUrl(), container.getResolvedReleasedId().getVersion() );
+        footerPresenter.setup( container.getPublicUrl(), container.getResolvedReleasedId().getVersion() );
 
         CardPresenter card = presenterProvider.select( CardPresenter.class ).get();
         card.addTitle( linkTitlePresenter );

@@ -427,7 +427,8 @@ public class AsyncKieServerInstanceManagerTest {
                                                 new ServerInstanceKey(serverTemplate.getId(),
                                                                       serverTemplate.getName(),
                                                                       serverTemplate.getId(),
-                                                                      "http://testurl.com"),
+                                                                      "http://testurl.com",
+                                                                      "http://publictesturl.com"),
                                                 messages,
                                                 null,
                                                 "");

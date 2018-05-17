@@ -247,7 +247,7 @@ public class ServerTemplateVFSStorageTest {
         fromStorage.addContainerSpec(newContainerSpec);
 
         // now let's add server instance
-        fromStorage.addServerInstance(ModelFactory.newServerInstanceKey(serverTemplate.getId(), "http://localhost:8080/server"));
+        fromStorage.addServerInstance(ModelFactory.newServerInstanceKey(serverTemplate.getId(), "http://localhost:8080/server", "http://publichost:8080/server"));
 
         templateStorage.update(fromStorage);
 
@@ -267,6 +267,7 @@ public class ServerTemplateVFSStorageTest {
         assertEquals(serverTemplate.getId()+"@localhost:8080", serverInstanceKey.getServerName());
         assertEquals(serverTemplate.getId() + "@localhost:8080", serverInstanceKey.getServerInstanceId());
         assertEquals("http://localhost:8080/server", serverInstanceKey.getUrl());
+        assertEquals("http://publichost:8080/server", serverInstanceKey.getPublicUrl());
 
         Collection<ContainerSpec> containerSpecs = template.getContainersSpec();
         assertNotNull(containerSpecs);

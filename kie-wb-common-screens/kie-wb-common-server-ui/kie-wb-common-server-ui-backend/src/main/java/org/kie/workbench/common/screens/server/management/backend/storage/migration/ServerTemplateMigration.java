@@ -92,7 +92,7 @@ public class ServerTemplateMigration {
                         for (KieServerInstanceInfo instanceInfo : instanceInfos) {
 
                             logger.debug("Migrating server instance '{}'", instanceInfo);
-                            serverTemplate.addServerInstance(ModelFactory.newServerInstanceKey(serverTemplate.getId(), instanceInfo.getLocation()));
+                            serverTemplate.addServerInstance(ModelFactory.newServerInstanceKey(serverTemplate.getId(), instanceInfo.getLocation(), instanceInfo.getPublicLocation()));
 
                             serverTemplate.setCapabilities(instanceInfo.getCapabilities());
                         }

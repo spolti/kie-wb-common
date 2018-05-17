@@ -101,7 +101,7 @@ public class RemotePresenterTest {
 
     @Test
     public void testRemove() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url", "publicUrl" );
         presenter.onSelect( new ServerInstanceSelected( serverInstanceKey ) );
 
         presenter.remove();
@@ -112,7 +112,7 @@ public class RemotePresenterTest {
 
     @Test
     public void testRemoveError() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url", "publicUrl" );
         presenter.onSelect( new ServerInstanceSelected( serverInstanceKey ) );
 
         doThrow( new RuntimeException() ).when( specManagementService ).deleteServerInstance( serverInstanceKey );
@@ -126,7 +126,7 @@ public class RemotePresenterTest {
 
     @Test
     public void testSelectAndRefresh() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url", "publicUrl");
         final Container container = new Container( "containerSpecId", "containerName", serverInstanceKey, Collections.<Message>emptyList(), null, null );
         final List<Container> containers = Collections.singletonList( container );
         when( runtimeManagementService.getContainersByServerInstance(
@@ -146,7 +146,7 @@ public class RemotePresenterTest {
 
     @Test
     public void testSelectAndRefreshEmptyContainers() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url", "publicUrl" );
         when( runtimeManagementService.getContainersByServerInstance(
                 serverInstanceKey.getServerTemplateId(),
                 serverInstanceKey.getServerInstanceId() ) ).thenReturn(
@@ -163,7 +163,7 @@ public class RemotePresenterTest {
 
     @Test
     public void testOnInstanceUpdate() {
-        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url","publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
         presenter.onSelect( new ServerInstanceSelected( serverInstance ) );
 
         presenter.onInstanceUpdate( new ServerInstanceUpdated( serverInstance ) );
@@ -176,10 +176,10 @@ public class RemotePresenterTest {
 
     @Test
     public void testOnInstanceUpdateDifferentServer() {
-        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
         presenter.onSelect( new ServerInstanceSelected( serverInstance ) );
 
-        final ServerInstance serverInstance2 = new ServerInstance( "templateId2", "serverName2", "serverInstanceId2", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance2 = new ServerInstance( "templateId2", "serverName2", "serverInstanceId2", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
         presenter.onInstanceUpdate( new ServerInstanceUpdated( serverInstance2 ) );
 
         verify( view ).clear();
@@ -190,7 +190,7 @@ public class RemotePresenterTest {
 
     @Test
     public void testOnInstanceUpdateWithoutSelect() {
-        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
 
         presenter.onInstanceUpdate( new ServerInstanceUpdated( serverInstance ) );
 

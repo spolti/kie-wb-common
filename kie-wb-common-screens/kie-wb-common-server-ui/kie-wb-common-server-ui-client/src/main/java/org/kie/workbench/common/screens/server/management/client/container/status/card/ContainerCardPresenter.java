@@ -94,7 +94,7 @@ public class ContainerCardPresenter {
                                       }
                                   } );
         bodyPresenter.setup( container.getMessages() );
-        footerPresenter.setup( container.getUrl(), container.getResolvedReleasedId().getVersion() );
+        footerPresenter.setup( container.getPublicUrl(), container.getResolvedReleasedId().getVersion() );
     }
 
 }

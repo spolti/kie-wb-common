@@ -109,7 +109,7 @@ public class ContainerCardPresenterTest {
         final CardPresenter cardPresenter = spy( new CardPresenter( cardPresenterView ) );
         when( cardPresenterProvider.get() ).thenReturn( cardPresenter );
 
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url", "publicUrl" );
         final Message message = new Message( Severity.INFO, "testMessage" );
         final ReleaseId resolvedReleasedId = new ReleaseId( "org.kie", "container", "1.0.0" );
         final Container container = new Container( "containerSpecId", "containerName", serverInstanceKey, Collections.singletonList( message ), resolvedReleasedId, null );

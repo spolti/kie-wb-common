@@ -252,7 +252,7 @@ public class ServerManagementBrowserPresenterTest {
 
     @Test
     public void testOnDelete() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverInstanceKeyId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverInstanceKeyId", "serverName", "serverInstanceId", "url", "publicUrl" );
         final ServerTemplate serverTemplate = new ServerTemplate( "ServerTemplateId", "ServerTemplateName" );
         serverTemplate.addServerInstance( serverInstanceKey );
         when( serverTemplatePresenter.getCurrentServerTemplate() ).thenReturn( serverTemplate );
@@ -270,7 +270,7 @@ public class ServerManagementBrowserPresenterTest {
 
     @Test
     public void testOnDeleteWithoutCurrentServer() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverInstanceKeyId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverInstanceKeyId", "serverName", "serverInstanceId", "url", "publicUrl" );
 
         presenter.onDelete( new ServerInstanceDeleted( serverInstanceKey.getServerInstanceId() ) );
 

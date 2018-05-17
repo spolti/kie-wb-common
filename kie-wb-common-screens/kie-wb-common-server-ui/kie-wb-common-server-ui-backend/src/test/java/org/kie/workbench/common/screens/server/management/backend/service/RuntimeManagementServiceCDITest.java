@@ -97,7 +97,7 @@ public class RuntimeManagementServiceCDITest {
         final String templateId = "templateId";
         final String templateName = "templateName";
         final String serverInstanceId = "serverInstanceId";
-        ServerInstanceKey serverInstanceKey = new ServerInstanceKey(templateId, templateName, serverInstanceId, "dummyUrl");
+        ServerInstanceKey serverInstanceKey = new ServerInstanceKey(templateId, templateName, serverInstanceId, "dummyUrl", "dummyPublicUrl");
         ServerTemplate serverTemplate = new ServerTemplate(
                 templateId,
                 templateName,
@@ -151,7 +151,7 @@ public class RuntimeManagementServiceCDITest {
 
         final ReleaseId releaseId = new ReleaseId(group, artifact, version);
 
-        ServerInstanceKey serverInstanceKey = new ServerInstanceKey(templateId, null, serverInstanceId, null);
+        ServerInstanceKey serverInstanceKey = new ServerInstanceKey(templateId, null, serverInstanceId, null, null);
 
         Container container = new Container(containerSpecId, containerName, serverInstanceKey, Collections.emptyList(), releaseId, null);
 

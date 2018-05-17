@@ -34,8 +34,9 @@ public class ConvertTest {
         final String serverName = "serverName";
         final String serverInstanceId = "serverInstanceId";
         final String url = "url";
+        final String publicUrl = "publicUrl";
 
-        ServerInstance serverInstance = new ServerInstance( serverTemplateId, serverName, serverInstanceId, url, "version", new ArrayList<Message>(), new ArrayList<Container>() );
+        ServerInstance serverInstance = new ServerInstance( serverTemplateId, serverName, serverInstanceId, url, publicUrl, "version", new ArrayList<Message>(), new ArrayList<Container>() );
 
         ServerInstanceKey key = Convert.toKey( serverInstance );
 
@@ -43,5 +44,6 @@ public class ConvertTest {
         assertEquals( serverName, key.getServerName() );
         assertEquals( serverInstanceId, key.getServerInstanceId() );
         assertEquals( url, key.getUrl() );
+        assertEquals( publicUrl, key.getPublicUrl());
     }
 }

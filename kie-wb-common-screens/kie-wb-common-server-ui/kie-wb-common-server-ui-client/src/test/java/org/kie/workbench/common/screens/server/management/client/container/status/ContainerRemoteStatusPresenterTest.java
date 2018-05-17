@@ -87,7 +87,7 @@ public class ContainerRemoteStatusPresenterTest {
         when( cardPresenter.getView() ).thenReturn( mock( ContainerCardPresenter.View.class ) );
         when( presenterProvider.get() ).thenReturn( cardPresenter );
 
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "templateId", "serverName", "serverInstanceId", "url", "publicUrl" );
         final Container container = new Container( "containerSpecId", "containerName", serverInstanceKey, Collections.<Message>emptyList(), null, null );
         container.setStatus( KieContainerStatus.STARTED );
 
@@ -112,7 +112,7 @@ public class ContainerRemoteStatusPresenterTest {
         when( cardPresenter.getView() ).thenReturn( mock( ContainerCardPresenter.View.class ) );
         when( presenterProvider.get() ).thenReturn( cardPresenter );
 
-        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverName", "serverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
         final Container container = new Container( "containerSpecId", "containerName", serverInstance, Collections.<Message>emptyList(), null, null );
         container.setStatus( KieContainerStatus.STARTED );
         final Container containerToBeRemoved = new Container( "containerToBeRemovedSpecId", "containerToBeRemovedName", serverInstance, Collections.<Message>emptyList(), null, null );
@@ -149,11 +149,11 @@ public class ContainerRemoteStatusPresenterTest {
                 .doReturn( cardPresenter3 )
                 .when( presenterProvider ).get();
 
-        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverInstanceId", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( "templateId", "serverInstanceId", "serverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
         final Container existingContainer = new Container( "containerToBeRemovedSpecId", "containerToBeRemovedName", serverInstance, Collections.<Message>emptyList(), null, null );
         existingContainer.setStatus( KieContainerStatus.STARTED );
 
-        final ServerInstance newServerInstance = new ServerInstance( "templateId", "newserverInstanceId", "newserverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance newServerInstance = new ServerInstance( "templateId", "newserverInstanceId", "newserverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
         final Container newContainer = new Container( "containerSpecId", "containerName", newServerInstance, Collections.<Message>emptyList(), null, null );
         newContainer.setStatus( KieContainerStatus.STARTED );
         newServerInstance.addContainer( newContainer );

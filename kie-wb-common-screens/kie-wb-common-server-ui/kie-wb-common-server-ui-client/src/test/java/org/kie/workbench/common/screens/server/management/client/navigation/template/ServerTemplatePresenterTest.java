@@ -131,7 +131,7 @@ public class ServerTemplatePresenterTest {
 
     @Test
     public void testOnServerInstanceSelect() {
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverInstanceKeyId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverInstanceKeyId", "serverName", "serverInstanceId", "url", "publicUrl" );
 
         presenter.onServerInstanceSelect( new ServerInstanceSelected( serverInstanceKey ) );
 
@@ -145,7 +145,7 @@ public class ServerTemplatePresenterTest {
 
         assertEquals( serverTemplate, presenter.getCurrentServerTemplate() );
 
-        final ServerInstance serverInstance = new ServerInstance( serverTemplate.getId(), "serverName", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( serverTemplate.getId(), "serverName", "serverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
 
         presenter.onServerInstanceUpdated( new ServerInstanceUpdated( serverInstance ) );
 
@@ -171,7 +171,7 @@ public class ServerTemplatePresenterTest {
     @Test
     public void testOnServerInstanceUpdatedWithoutCurrentServer() {
         final ServerTemplate serverTemplate = new ServerTemplate( "ServerTemplateId", "ServerTemplateName" );
-        final ServerInstance serverInstance = new ServerInstance( serverTemplate.getId(), "serverName", "serverInstanceId", "url", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
+        final ServerInstance serverInstance = new ServerInstance( serverTemplate.getId(), "serverName", "serverInstanceId", "url", "publicUrl", "1.0", Collections.<Message>emptyList(), Collections.<Container>emptyList() );
 
         presenter.onServerInstanceUpdated( new ServerInstanceUpdated( serverInstance ) );
 
@@ -255,7 +255,7 @@ public class ServerTemplatePresenterTest {
     @Test
     public void testSetup() {
         final ServerTemplate serverTemplate = new ServerTemplate( "ServerTemplateKeyId", "ServerTemplateKeyName" );
-        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverTemplateId", "serverName", "serverInstanceId", "url" );
+        final ServerInstanceKey serverInstanceKey = new ServerInstanceKey( "serverTemplateId", "serverName", "serverInstanceId", "url", "publicUrl" );
         serverTemplate.addServerInstance( serverInstanceKey );
 
         final ReleaseId releaseId = new ReleaseId( "org.kie", "container", "1.0.0" );

@@ -209,7 +209,7 @@ public class AsyncKieServerInstanceManager extends KieServerInstanceManager {
                 serverInstance.setServerName(serverInstanceKey.getServerName());
                 serverInstance.setServerTemplateId(serverInstanceKey.getServerTemplateId());
                 serverInstance.setServerInstanceId(serverInstanceKey.getServerInstanceId());
-                serverInstance.setUrl(serverInstanceKey.getUrl());
+                serverInstance.setUrl(serverInstanceKey.getPublicUrl());
 
                 serverInstance.setContainers(containers);
 

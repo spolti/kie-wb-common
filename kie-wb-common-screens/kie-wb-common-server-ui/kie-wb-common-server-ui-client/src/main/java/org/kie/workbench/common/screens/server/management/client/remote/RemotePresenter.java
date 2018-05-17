@@ -152,7 +152,7 @@ public class RemotePresenter {
 
         view.clear();
         view.setServerName( serverInstanceKey.getServerName() );
-        view.setServerURL( serverInstanceKey.getUrl() );
+        view.setServerURL( serverInstanceKey.getPublicUrl() );
         if ( containers.isEmpty() ) {
             view.setEmptyView( remoteEmptyPresenter.getView() );
         } else {

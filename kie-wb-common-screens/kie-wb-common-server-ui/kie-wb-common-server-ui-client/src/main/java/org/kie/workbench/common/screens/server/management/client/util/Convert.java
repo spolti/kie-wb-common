@@ -28,7 +28,8 @@ public final class Convert {
         return new ServerInstanceKey( serverInstance.getServerTemplateId(),
                                       serverInstance.getServerName(),
                                       serverInstance.getServerInstanceId(),
-                                      serverInstance.getUrl() );
+                                      serverInstance.getUrl(),
+                                      serverInstance.getPublicUrl());
     }
 
 }
